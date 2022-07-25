@@ -31,12 +31,16 @@
             </TabItem>
             <TabItem Header="Настройки" Margin="-2,-2,-2,0">
                 <Grid Background="#FFE5E5E5">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="13*"/>
-                        <ColumnDefinition Width="72*"/>
-                        <ColumnDefinition Width="15*"/>
-                        <ColumnDefinition Width="694*"/>
-                    </Grid.ColumnDefinitions>
+
+                    <TextBox HorizontalAlignment="Left" Margin="85,35,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="212" Height="25" RenderTransformOrigin="0.496,1.497"/>
+                    <TextBox HorizontalAlignment="Left" Margin="358,36,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="39" RenderTransformOrigin="-0.75,0.497
+" Height="25"/>
+                    <Label Content="Порт" HorizontalAlignment="Left" Margin="302,32,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.432,-0.236" Width="51"/>
+                    <Label Content="Сервер" HorizontalAlignment="Left" Margin="30,29,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.432,-0.236"/>
+                    <Label Content="Имя пользователя" HorizontalAlignment="Left" Margin="30,85,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.432,-0.236" Width="267"/>
+                    <TextBox HorizontalAlignment="Left" Margin="30,116,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="267" Height="25" RenderTransformOrigin="0.496,1.497"/>
+                    <Label Content="Пароль" HorizontalAlignment="Left" Margin="30,144,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.432,-0.236" Width="267"/>
+                    <PasswordBox HorizontalAlignment="Left" Margin="30,175,0,0" VerticalAlignment="Top" Width="267" Height="25"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Журнал" Margin="-2,-2,-2,0">
@@ -47,6 +51,7 @@
                         <ColumnDefinition Width="15*"/>
                         <ColumnDefinition Width="694*"/>
                     </Grid.ColumnDefinitions>
+                    <TextBox Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="771" Height="456"/>
                 </Grid>
             </TabItem>
         </TabControl>

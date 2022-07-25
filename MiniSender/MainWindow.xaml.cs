@@ -10,7 +10,7 @@ namespace MiniSender
     public partial class MainWindow : Window
     {
         private string letterData;
-
+     
         public MainWindow()
         {
             InitializeComponent();
@@ -47,7 +47,7 @@ namespace MiniSender
                 })
                 {
                     smtp.Send(message);
-                    tbLog.Text = "Message has been sent";
+                    tbLog.Text = DateTime.Now.ToString() + " Message has been sent";
 
                 }
                 //MessageBox.Show("Message has been sent");
@@ -56,7 +56,7 @@ namespace MiniSender
             catch (Exception ex)
             {
                 Debug.Write(ex.ToString());
-                Console.WriteLine(ex);
+                tbLog.Text = DateTime.Now.ToString() +" " + ex.ToString();
             }
         }
 

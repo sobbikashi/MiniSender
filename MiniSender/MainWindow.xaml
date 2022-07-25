@@ -5,8 +5,53 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MiniSender"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MiniSender" Height="520" Width="800">
     <Grid>
-        
+
+        <TabControl>
+            <TabItem Header="Редактирование писем">
+                <Grid Background="#FFE5E5E5" Height="500">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="13*"/>
+                        <ColumnDefinition Width="72*"/>
+                        <ColumnDefinition Width="15*"/>
+                        <ColumnDefinition Width="253*"/>
+                        <ColumnDefinition Width="441*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox Grid.ColumnSpan="5" HorizontalAlignment="Left" Margin="10,22,0,0" TextWrapping="Wrap" Text="Тема письма" VerticalAlignment="Top" Width="760"/>
+                    <TextBox Grid.ColumnSpan="5" HorizontalAlignment="Left" Margin="10,45,0,0" TextWrapping="Wrap" Text="Текст письма" VerticalAlignment="Top" Width="760" Height="213"/>
+                    <ComboBox Grid.ColumnSpan="5" HorizontalAlignment="Left" Margin="12,293,0,0" VerticalAlignment="Top" Width="756"/>
+                    <Label Content="From:" HorizontalAlignment="Left" Margin="12,263,0,0" VerticalAlignment="Top" Grid.ColumnSpan="4" Width="142"/>
+                    <Label Content="To:" HorizontalAlignment="Left" Margin="0,320,0,0" VerticalAlignment="Top" Width="142" Grid.ColumnSpan="3" Grid.Column="1"/>
+                    <TextBox Grid.Column="1" Grid.ColumnSpan="4" HorizontalAlignment="Left" Margin="0,351,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="757" Height="22"/>
+                    <Button Grid.Column="3" Content="Save" HorizontalAlignment="Left" Margin="228,407,0,0" VerticalAlignment="Top" Width="138" Grid.ColumnSpan="2" />
+                    <Button Grid.Column="4" Content="Cancel" HorizontalAlignment="Left" Margin="196,407,0,0" VerticalAlignment="Top" Width="138" Click="Button_Click" />
+                    <Button Grid.Column="1" Content="Send" HorizontalAlignment="Left" Margin="70,407,0,0" VerticalAlignment="Top" Width="138" Grid.ColumnSpan="3"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Настройки" Margin="-2,-2,-2,0">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="13*"/>
+                        <ColumnDefinition Width="72*"/>
+                        <ColumnDefinition Width="15*"/>
+                        <ColumnDefinition Width="694*"/>
+                    </Grid.ColumnDefinitions>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Журнал" Margin="-2,-2,-2,0">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="13*"/>
+                        <ColumnDefinition Width="72*"/>
+                        <ColumnDefinition Width="15*"/>
+                        <ColumnDefinition Width="694*"/>
+                    </Grid.ColumnDefinitions>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+
+
     </Grid>
 </Window>

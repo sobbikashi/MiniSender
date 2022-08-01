@@ -28,7 +28,7 @@ namespace MiniSender
             mail.Body = tbBody.Text;
             from = new MailAddress("test.send207 @gmail.com");
             to = new MailAddress("vanilmirth@inbox.ru");
-            emailSender.Send(from, to, mail, tbPassword.Password);
+            emailSender.SendMyMail();
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)

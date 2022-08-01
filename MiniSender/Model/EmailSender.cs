@@ -8,41 +8,24 @@ namespace MiniSender.Model
 {
     class EmailSender
     {
-        public void Send(MailAddress fromAddress, MailAddress toAddress, string message, string password)
+        public void SendMyMail()
         {
-            try
+           MailAddress from = new MailAddress("test.send207@gmail.com");
+           MailAddress to = new MailAddress("vanilmirth@inbox.ru");
+           MailMessage m = new MailMessage(from, to);
+            m.Subject = "Тест";
+            m.Body = "проверка";
+            var smtp = new SmtpClient()
             {
-                fromAddress = new MailAddress("test.send207@gmail.com");
-                toAddress = new MailAddress("vanilmirth@inbox.ru");
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential("test.send207@gmail.com", "oddmopuytnwnchjj"),
+            };
+            smtp.Send(m);
 
-                //string subject = message.Subject;
-
-                //string body = message.Body;
-
-                //string password = tbPassword.Password;
-
-                var smtp = new SmtpClient()
-
-                {
-                    Host = "smtp.gmail.com",
-                    Port = 587,
-                    EnableSsl = true,
-                    DeliveryMethod = SmtpDeliveryMethod.Network,
-                    UseDefaultCredentials = false,
-                    Credentials = new NetworkCredential("test.send207@gmail.com", password),
-                };                
-                    smtp.Send(fromAddress, toAddress, message, password);
-                    //MiniSender.tbLog.Text = DateTime.Now.ToString() + " Message has been sent";
-                                
-                //MessageBox.Show("Message has been sent");
-
-            }
-            catch (Exception ex)
-            {
-                Debug.Write(ex.ToString());
-                Console.WriteLine(ex.ToString());
-                //tbLog.Text = DateTime.Now.ToString() + " " + ex.ToString();
-            }
         }
 
     }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.IO;
 using System.Net;
 using System.Net.Mail;
 using System.Threading.Tasks;
@@ -17,6 +18,10 @@ namespace MiniSender.Model
                 MailMessage message = new MailMessage();
                 message.Subject = Common.Subject;
                 message.Body = Common.Body;
+                if ((Common.Path != "") & (File.Exists(Common.Path)))
+                {
+                    message.Attachments.Add(new Attachment(Common.Path));
+                }
                
 
                 var smtp = new SmtpClient()
@@ -29,7 +34,8 @@ namespace MiniSender.Model
                     Credentials = new NetworkCredential(Common.Username, Common.Password),
                 };
                 smtp.Send(Common.Username, Common.Reciever, message.Subject, message.Body);
-                Common.Logger = "done";
+                Common.Logger = message.Attachments.ToString();
+                
             }
             catch (Exception ex)
             {              

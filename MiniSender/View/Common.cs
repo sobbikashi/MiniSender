@@ -10,6 +10,7 @@
         public static string Body { get; set; }
         public static string Reciever { get; set; }
         public static string Logger { get; set; }
+        public static string Path { get; set; }
 
     }
 }

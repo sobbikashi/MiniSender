@@ -5,12 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MiniSender"
         mc:Ignorable="d"
-        Title="MiniSender" Height="520" Width="800">
+        Title="MiniSender" Height="591" Width="834">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="0*"/>
+            <RowDefinition Height="0*"/>
+        </Grid.RowDefinitions>
 
         <TabControl>
             <TabItem Header="Редактирование писем">
-                <Grid Background="#FFE5E5E5" Height="500">
+                <Grid Background="#FFE5E5E5" Height="543">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="13*"/>
                         <ColumnDefinition Width="72*"/>
@@ -36,7 +41,7 @@
                     <Button Grid.Column="1" Content="Send" x:Name="btnSend" HorizontalAlignment="Left" Margin="71,435,0,0" VerticalAlignment="Top" Width="138" Grid.ColumnSpan="6" Click="btnSend_Click" />
                     <Label x:Name="lbAttach" Content="Attach" HorizontalAlignment="Left" Margin="0,250,0,0" VerticalAlignment="Top" Grid.ColumnSpan="3" Width="142" Grid.Column="1"/>
                     <TextBox x:Name="tbAttach" Grid.Column="1" Grid.ColumnSpan="7" HorizontalAlignment="Left" Margin="1,281,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="634"/>
-                    <Button x:Name="btnChooseAttach" Grid.Column="7" Content="Open" HorizontalAlignment="Left" Margin="323,281,0,0" VerticalAlignment="Top" Width="94"/>
+                    <Button x:Name="btnChooseAttach" Grid.Column="7" Content="Open" HorizontalAlignment="Left" Margin="323,281,0,0" VerticalAlignment="Top" Width="94" Click="btnChooseAttach_Click"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Настройки" Margin="-2,-2,-2,0">

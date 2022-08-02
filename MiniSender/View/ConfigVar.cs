@@ -1,21 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MiniSender.View
+﻿namespace MiniSender.View
 {
     internal class ConfigVar
     {
-        public static string host;
-        public static int port;
-        public static string subject;
-        public static string username;
-        public static string password;
-        public static string body;
-        public static string reciever;
-        public static string logger;
+        public static string Host { get; set; }
+        public static int Port { get; set; }
+        public static string Subject { get; set; } 
+        public static string Username { get; set; }
+        public static string Password { get; set; }
+        public static string Body { get; set; }
+        public static string Reciever { get; set; }
+        public static string Logger { get; set; }
 
     }
 }

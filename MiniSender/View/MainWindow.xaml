@@ -22,7 +22,7 @@
                         <ColumnDefinition Width="441*"/>
                     </Grid.ColumnDefinitions>
                     <TextBox x:Name="tbSubject" Grid.ColumnSpan="8" HorizontalAlignment="Left" Margin="10,22,0,0" TextWrapping="Wrap" Text="Тестовая тема" VerticalAlignment="Top" Width="760"/>
-                    <TextBox x:Name="tbBody" Grid.ColumnSpan="8" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Тестовое письмо" Margin="10,45,0,0" VerticalAlignment="Top" Width="760" Height="213"/>
+                    <TextBox x:Name="tbBody" Grid.ColumnSpan="8" HorizontalAlignment="Left" TextWrapping="Wrap" Margin="10,45,0,0" VerticalAlignment="Top" Width="760" Height="213" TextChanged="tbBody_TextChanged"/>
                     <ComboBox x:Name="cbFromAddress" Grid.ColumnSpan="8" HorizontalAlignment="Left" Margin="12,293,0,0" VerticalAlignment="Top" Width="756" Text="test.send207@gmail.com">
                         <ComboBoxItem>test.send207@gmail.com
                         </ComboBoxItem>

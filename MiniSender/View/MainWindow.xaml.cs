@@ -22,17 +22,17 @@ namespace MiniSender
         }
         private void FillData()
         {
-            ConfigVar.host = tbServer.Text;
-            ConfigVar.port = Int32.Parse(tbPort.Text);
-            ConfigVar.subject = tbSubject.Text;
-            ConfigVar.password = tbPassword.Password;
-            ConfigVar.body = tbBody.Text;
-            ConfigVar.username = tbUserName.Text;
-            ConfigVar.reciever = tbToAddress.Text;
+            ConfigVar.Host = tbServer.Text;
+            ConfigVar.Port = Int32.Parse(tbPort.Text);
+            ConfigVar.Subject = tbSubject.Text;
+            ConfigVar.Password = tbPassword.Password;
+            ConfigVar.Body = tbBody.Text;
+            ConfigVar.Username = tbUserName.Text;
+            ConfigVar.Reciever = tbToAddress.Text;
         }
         private void FillLogger()
         {
-            tbLog.Text = ConfigVar.logger;
+            tbLog.Text = ConfigVar.Logger;
         }
        
 
@@ -58,6 +58,11 @@ namespace MiniSender
             }
             File.AppendAllText(path, letterData);
 
+        }
+
+        private void tbBody_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            ConfigVar.Body = tbBody.Text;
         }
     }
 }

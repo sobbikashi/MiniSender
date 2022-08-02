@@ -15,25 +15,25 @@ namespace MiniSender.Model
             try
             {
                 MailMessage message = new MailMessage();
-                message.Subject = ConfigVar.Subject;
-                message.Body = ConfigVar.Body;
+                message.Subject = Common.Subject;
+                message.Body = Common.Body;
                
 
                 var smtp = new SmtpClient()
                 {
-                    Host = ConfigVar.Host,
-                    Port = ConfigVar.Port,
+                    Host = Common.Host,
+                    Port = Common.Port,
                     EnableSsl = true,
                     DeliveryMethod = SmtpDeliveryMethod.Network,
                     UseDefaultCredentials = false,
-                    Credentials = new NetworkCredential(ConfigVar.Username, ConfigVar.Password),
+                    Credentials = new NetworkCredential(Common.Username, Common.Password),
                 };
-                smtp.Send(ConfigVar.Username, ConfigVar.Reciever, message.Subject, message.Body);
-                ConfigVar.Logger = "done";
+                smtp.Send(Common.Username, Common.Reciever, message.Subject, message.Body);
+                Common.Logger = "done";
             }
             catch (Exception ex)
             {              
-               ConfigVar.Logger = ex.ToString();
+               Common.Logger = ex.ToString();
             }    
             
 

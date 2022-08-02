@@ -8,10 +8,7 @@ namespace MiniSender
 {
     public partial class MainWindow : Window
     {
-        private string letterData;
-        DateTime loggerTime = DateTime.Now;
-
-     
+           
         public MainWindow()
         {
             InitializeComponent();
@@ -19,17 +16,17 @@ namespace MiniSender
         }
         private void FillData()
         {
-            ConfigVar.Host = tbServer.Text;
-            ConfigVar.Port = Int32.Parse(tbPort.Text);
-            ConfigVar.Subject = tbSubject.Text;
-            ConfigVar.Password = tbPassword.Password;
-            ConfigVar.Body = tbBody.Text;
-            ConfigVar.Username = tbUserName.Text;
-            ConfigVar.Reciever = tbToAddress.Text;
+            Common.Host = tbServer.Text;
+            Common.Port = Int32.Parse(tbPort.Text);
+            Common.Subject = tbSubject.Text;
+            Common.Password = tbPassword.Password;
+            Common.Body = tbBody.Text;
+            Common.Username = tbUserName.Text;
+            Common.Reciever = tbToAddress.Text;
         }
         private void FillLogger()
         {
-            tbLog.Text = ConfigVar.Logger;
+            tbLog.Text = Common.Logger;
         }       
 
         private void btnSend_Click(object sender, RoutedEventArgs e)
@@ -46,31 +43,24 @@ namespace MiniSender
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            string path = @"E:\УЧЁБА\logs\maillog.txt";
-            if (!File.Exists(path))
-            {
-                letterData = loggerTime.ToString() + "\n" + "От кого: " + ConfigVar.Username + "\n" + "Кому: " + ConfigVar.Reciever + "\n" + ConfigVar.Subject + "\n" + ConfigVar.Body + Environment.NewLine;
-                File.WriteAllText(path, letterData);
-            }
-            File.AppendAllText(path, letterData);
-            ConfigVar.Logger = "Сохранено";
+            SaveMessage messageSaver = new SaveMessage();
+            messageSaver.SaveInFile();
             FillLogger();
-
         }
 
         private void tbBody_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
-            ConfigVar.Body = tbBody.Text;
+            Common.Body = tbBody.Text;
         }
 
         private void tbSubject_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
-            ConfigVar.Subject = tbSubject.Text;
+            Common.Subject = tbSubject.Text;
         }
 
         private void tbToAddress_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
-            ConfigVar.Reciever = tbToAddress.Text;
+            Common.Reciever = tbToAddress.Text;
         }
     }
 }

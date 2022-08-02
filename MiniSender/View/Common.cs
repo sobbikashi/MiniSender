@@ -1,6 +1,6 @@
 ﻿namespace MiniSender.View
 {
-    internal class ConfigVar
+    internal class Common
     {
         public static string Host { get; set; }
         public static int Port { get; set; }

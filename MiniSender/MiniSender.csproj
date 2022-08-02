@@ -64,7 +64,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Model\EmailSender.cs" />
-    <Compile Include="View\ConfigVar.cs" />
+    <Compile Include="Model\SaveMessage.cs" />
+    <Compile Include="View\Common.cs" />
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

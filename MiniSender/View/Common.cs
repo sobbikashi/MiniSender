@@ -1,4 +1,6 @@
-﻿namespace MiniSender.View
+﻿using System.Net.Mail;
+
+namespace MiniSender.View
 {
     internal class Common
     {

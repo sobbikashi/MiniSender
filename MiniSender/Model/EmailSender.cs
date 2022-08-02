@@ -15,14 +15,19 @@ namespace MiniSender.Model
         {
             try
             {
-                MailMessage message = new MailMessage();
+                MailAddress from = new MailAddress(Common.Username);
+                MailAddress to = new MailAddress(Common.Reciever);
+                MailMessage message = new MailMessage(from, to);
                 message.Subject = Common.Subject;
                 message.Body = Common.Body;
+
+
                 if ((Common.Path != "") & (File.Exists(Common.Path)))
                 {
-                    message.Attachments.Add(new Attachment(Common.Path));
+                    Attachment data = new Attachment(Common.Path);
+                    message.Attachments.Add(data);
                 }
-               
+                
 
                 var smtp = new SmtpClient()
                 {
@@ -32,8 +37,8 @@ namespace MiniSender.Model
                     DeliveryMethod = SmtpDeliveryMethod.Network,
                     UseDefaultCredentials = false,
                     Credentials = new NetworkCredential(Common.Username, Common.Password),
-                };
-                smtp.Send(Common.Username, Common.Reciever, message.Subject, message.Body);
+                };                
+                smtp.Send(message);
                 Common.Logger = message.Attachments.ToString();
                 
             }

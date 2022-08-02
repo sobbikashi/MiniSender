@@ -1,24 +1,21 @@
 ﻿using MiniSender.Model;
 using MiniSender.View;
 using System;
-using System.Diagnostics;
 using System.IO;
-using System.Net;
-using System.Net.Mail;
 using System.Windows;
 
 namespace MiniSender
-{  
+{
     public partial class MainWindow : Window
     {
-        private string letterData;       
+        private string letterData;
+        DateTime loggerTime = DateTime.Now;
 
      
         public MainWindow()
         {
             InitializeComponent();
             FillData();
-
         }
         private void FillData()
         {
@@ -33,8 +30,7 @@ namespace MiniSender
         private void FillLogger()
         {
             tbLog.Text = ConfigVar.Logger;
-        }
-       
+        }       
 
         private void btnSend_Click(object sender, RoutedEventArgs e)
         {
@@ -50,13 +46,15 @@ namespace MiniSender
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            string path = @"E:\УЧЁБА\logs\mail.txt";
+            string path = @"E:\УЧЁБА\logs\maillog.txt";
             if (!File.Exists(path))
             {
-                letterData = "От кого: " + tbUserName.Text + "\n" + "Кому: " + tbToAddress.Text + "\n" + tbSubject.Text + "\n" + tbBody.Text + Environment.NewLine;
+                letterData = loggerTime.ToString() + "\n" + "От кого: " + ConfigVar.Username + "\n" + "Кому: " + ConfigVar.Reciever + "\n" + ConfigVar.Subject + "\n" + ConfigVar.Body + Environment.NewLine;
                 File.WriteAllText(path, letterData);
             }
             File.AppendAllText(path, letterData);
+            ConfigVar.Logger = "Сохранено";
+            FillLogger();
 
         }
 

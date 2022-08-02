@@ -2,7 +2,9 @@
 using System.Diagnostics;
 using System.Net;
 using System.Net.Mail;
+using System.Threading.Tasks;
 using MiniSender;
+using MiniSender.View;
 
 namespace MiniSender.Model
 {
@@ -10,21 +12,33 @@ namespace MiniSender.Model
     {
         public void SendMyMail()
         {
-           MailAddress from = new MailAddress("test.send207@gmail.com");
-           MailAddress to = new MailAddress("vanilmirth@inbox.ru");
-           MailMessage m = new MailMessage(from, to);
-            m.Subject = "Тест";
-            m.Body = "проверка";
-            var smtp = new SmtpClient()
+            try
             {
-                Host = "smtp.gmail.com",
-                Port = 587,
-                EnableSsl = true,
-                DeliveryMethod = SmtpDeliveryMethod.Network,
-                UseDefaultCredentials = false,
-                Credentials = new NetworkCredential("test.send207@gmail.com", "oddmopuytnwnchjj"),
-            };
-            smtp.Send(m);
+                MailAddress fromAddress = new MailAddress(ConfigVar.username);
+                MailMessage message = new MailMessage();
+                message.Subject = ConfigVar.subject;
+                message.Body = ConfigVar.body;
+                message.Sender = fromAddress;
+
+                var smtp = new SmtpClient()
+                {
+                    Host = ConfigVar.host,
+                    Port = ConfigVar.port,
+                    EnableSsl = true,
+                    DeliveryMethod = SmtpDeliveryMethod.Network,
+                    UseDefaultCredentials = false,
+                    Credentials = new NetworkCredential(ConfigVar.username, ConfigVar.password),
+                };
+                smtp.Send(ConfigVar.username, ConfigVar.reciever, message.Subject, message.Body);
+                ConfigVar.logger = "done";
+            }
+            catch (Exception ex)
+            {
+                Debug.Write(ex.ToString());
+                Console.WriteLine(ex.ToString());
+                ConfigVar.logger = ex.ToString();
+            }    
+            
 
         }
 

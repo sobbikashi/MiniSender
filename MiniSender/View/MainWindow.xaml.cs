@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MiniSender.Model;
+using MiniSender.View;
+using System;
 using System.Diagnostics;
 using System.IO;
 using System.Net;
@@ -9,26 +11,36 @@ namespace MiniSender
 {  
     public partial class MainWindow : Window
     {
-        private string letterData;
-        private MailAddress from;
-        private MailAddress to;
+        private string letterData;       
 
      
         public MainWindow()
         {
             InitializeComponent();
+            FillData();
+
+        }
+        private void FillData()
+        {
+            ConfigVar.host = tbServer.Text;
+            ConfigVar.port = Int32.Parse(tbPort.Text);
+            ConfigVar.subject = tbSubject.Text;
+            ConfigVar.password = tbPassword.Password;
+            ConfigVar.body = tbBody.Text;
+            ConfigVar.username = tbUserName.Text;
+            ConfigVar.reciever = tbToAddress.Text;
+        }
+        private void FillLogger()
+        {
+            tbLog.Text = ConfigVar.logger;
         }
        
 
         private void btnSend_Click(object sender, RoutedEventArgs e)
         {
-            Model.EmailSender emailSender = new Model.EmailSender();
-            MailMessage mail = new MailMessage();
-            mail.Subject = tbSubject.Text;
-            mail.Body = tbBody.Text;
-            from = new MailAddress("test.send207 @gmail.com");
-            to = new MailAddress("vanilmirth@inbox.ru");
-            emailSender.SendMyMail();
+            EmailSender mail = new EmailSender();
+            mail.SendMyMail();
+            FillLogger();
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)

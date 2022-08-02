@@ -64,5 +64,15 @@ namespace MiniSender
         {
             ConfigVar.Body = tbBody.Text;
         }
+
+        private void tbSubject_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            ConfigVar.Subject = tbSubject.Text;
+        }
+
+        private void tbToAddress_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            ConfigVar.Reciever = tbToAddress.Text;
+        }
     }
 }
